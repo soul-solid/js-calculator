@@ -34,6 +34,10 @@ body {
     font-size: 2.2em;
 }
 
+.header:hover {
+    cursor: default;
+}
+
 .container {
     width: 500px;
     height: 500px;
@@ -47,7 +51,7 @@ body {
     background-color: var(--color1);
 }
 
-.container > .display, .container > .input {
+.container > .output, .container > .input {
     width: 97%;
 
     border: none;
@@ -58,9 +62,19 @@ body {
     font-size: 2.2em;
 }
 
-.container .display {
+.container .output {
     height: 40%;  
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+
     background-color: var(--another-one);
+    cursor: not-allowed;
+}
+
+.container .output:hover {
+    border: 2px solid darkgoldenrod;
 }
 
 .container .input {
@@ -119,6 +133,7 @@ body {
     background-color: var(--border);
     border: 2px solid var(--border);
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .left-btn {
@@ -139,4 +154,5 @@ body {
 
 #ac-btn:hover {
     background-color: var(--ac2);
+    border: 2px solid var(--ac2);
 }
