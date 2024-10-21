@@ -6,7 +6,6 @@
     --another-one: #003135;
     --texture: #d3d9d4;
     --color1: #2e3944;
-    --color2: #124e66;
     --ac1: #5d001e;
     --ac2:  #ac3b61;
 }
@@ -23,16 +22,15 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    background-color: var(--background);
-    
-    color: var(--text);
-}
 
-.header {
     color: var(--texture);
+    background-color: var(--background);
     font-family: "aboreto", sans-serif;
     font-weight: 400;
     font-style: normal;
+}
+
+.header {
     font-size: 2.2em;
 }
 
@@ -43,31 +41,40 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+
     border: 8px solid var(--border);
     border-radius: 20px;
-
     background-color: var(--color1);
 }
 
-.container .display {
+.container > .display, .container > .input {
     width: 97%;
-    height: 40%;
-    border: 2px solid darkgoldenrod;
-    border-radius: 8px;
 
+    border: none;
+    border-radius: 8px;
+    color: inherit;
+    text-align: right;
+    font-weight: 900;
+    font-size: 2.2em;
+}
+
+.container .display {
+    height: 40%;  
     background-color: var(--another-one);
 }
 
 .container .input {
-    width: 97%;
     height: 60px;
-    border: 2px solid darkgoldenrod;
-    border-radius: 8px;
-
     background-color: var(--color1);
+}
 
-    text-align: right;
-    font-size: 2.2em;
+.container .input:focus {
+    outline: none;
+    background-color: var(--background);
+}
+
+.container .input:hover {
+    background-color: var(--background);
 }
 
 .container .btns {
@@ -86,44 +93,44 @@ body {
     align-items: center;
     flex: 1;
     flex-wrap: wrap;
-    border-radius: 13px;
 }
 
-.right-btn {
-    width: 25%;
-    height: 18%;
-    margin: 5px;
-    flex-grow: 1;
-
-    text-align: center;
-    font-size: 1.2em;
-}
-
-.zero-btn {
-    flex-grow: 8;
-}
-
-.left-btn {
-    width: 40%;
-    height: 18%;
-    margin: 5px;
-    flex-grow: 1;
-
-    text-align: center;
-    font-size: 1.2em;
+.left-btns {
+    border-right: 2px solid darkgoldenrod;
 }
 
 .btn {
+    height: 18%;
+    margin: 5px;
     padding: 2px;
-    background-color: var(--another-one);
+    flex-grow: 1;
+
     border: 2px solid aliceblue;
     border-radius: 5px;
+    color: var(--text);
+    background-color: var(--another-one);
+    text-align: center;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1.3em;
 }
 
 .btn:hover {
     background-color: var(--border);
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
     border-radius: 5px;
+}
+
+.left-btn {
+    width: 25%;
+}
+
+.right-btn {
+    width: 40%;
+}
+
+.zero-btn {
+    flex-grow: 8;
 }
 
 #ac-btn {
