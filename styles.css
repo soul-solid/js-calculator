@@ -1,13 +1,13 @@
 :root {
-    --background: #024950;
-    --border: #964735;
-    --text: #afdde5;
+    --background: #024950; /* in use */
+    --border: #964735; /* in use */
+    --text: #afdde5; /* in use */
     --idk-why: #0fa4af;
     --another-one: #003135;
-    --texture: #d3d9d4;
-    --color1: #2e3944;
-    --ac1: #5d001e;
-    --ac2:  #ac3b61;
+    --texture: #d3d9d4; /* in use */
+    --color1: #2e3944; /* in use */
+    --ac1: #5d001e; /* in use */
+    --ac2:  #ac3b61; /* in use */
 }
 
 *, ::before, ::after {
@@ -109,10 +109,6 @@ body {
     flex-wrap: wrap;
 }
 
-.left-btns {
-    border-right: 2px solid darkgoldenrod;
-}
-
 .btn {
     height: 18%;
     margin: 5px;
@@ -141,7 +137,8 @@ body {
 }
 
 .right-btn {
-    width: 40%;
+    width: 25%;
+    height: 25%;
 }
 
 .zero-btn {
@@ -155,4 +152,15 @@ body {
 #ac-btn:hover {
     background-color: var(--ac2);
     border: 2px solid var(--ac2);
+}
+
+#erase-btn {
+    color: var(--color1);
+    background-color: var(--idk-why);
+    border: none;
+}
+
+#erase-btn:hover {
+    background-color: var(--text);
+    border: 2px solid var(--text);
 }

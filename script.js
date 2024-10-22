@@ -4,6 +4,7 @@ const btns = document.querySelector(".btns");
 
 btns.addEventListener("click", (event) => {
     let buttonText = event.target.textContent;
+    let inputValue = input.value;
     
     function createTxtElement() {
         const text = document.createElement("span");
@@ -12,42 +13,36 @@ btns.addEventListener("click", (event) => {
         output.appendChild(text);
     };
 
-    if (buttonText === "9") {
-        input.value += buttonText;
-    } else if (buttonText === "8") {
-        input.value += buttonText;
-    } else if (buttonText === "7") {
-        input.value += buttonText;
-    } else if (buttonText === "6") {
-        input.value += buttonText;
-    } else if (buttonText === "5") {
-        input.value += buttonText;
-    } else if (buttonText === "4") {
-        input.value += buttonText;
-    } else if (buttonText === "3") {
-        input.value += buttonText;
-    } else if (buttonText === "2") {
-        input.value += buttonText;
-    } else if (buttonText === "1") {
-        input.value += buttonText;
-    } else if (buttonText === "0") {
-        input.value += buttonText;
-    } else if (buttonText === ".") {
-        input.value += buttonText;
-    } else if (buttonText === "%") {
-        input.value += buttonText;
-    } else if (buttonText === "+") {
-        input.value += buttonText;
-    } else if (buttonText === "-") {
-        input.value += buttonText;
-    } else if (buttonText === "*") {
-        input.value += buttonText;
-    } else if (buttonText === "/") {
-        input.value += buttonText;
-    } else if (buttonText === "=") {
-        createTxtElement();
-    } else if (buttonText === "AC") {
-        input.value = "";
-        output.textContent = "";
+    switch (buttonText) {
+        case "9":
+        case "8":
+        case "7":
+        case "6":
+        case "5":
+        case "4":
+        case "3":
+        case "2":
+        case "1":
+        case "0":
+        case ".":
+        case "%":
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+            input.value += buttonText;
+            break;
+        case "=":
+            createTxtElement();
+            break;
+        case "AC":
+            input.value = "";
+            output.textContent = "";
+            break;
+        case "CE":
+            input.value = "";
+            break;
     }
+
+    return inputValue;
 });
