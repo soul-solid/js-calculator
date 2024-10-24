@@ -31,7 +31,24 @@ body {
 }
 
 .header {
+    font-weight: 900;
     font-size: 2.2em;
+}
+
+.header p {
+    margin-top: -50px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: .5em
+} 
+
+.header p a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.header p a:hover {
+    color: var(--idk-why);
 }
 
 .header:hover {
@@ -59,22 +76,46 @@ body {
     color: inherit;
     text-align: right;
     font-weight: 900;
-    font-size: 2.2em;
+    font-size: 2em;
 }
 
 .container .output {
     height: 40%;  
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    overflow: hidden;
+    flex-direction: row;
+    gap: 2px;
 
     background-color: var(--another-one);
+    border: 2px solid var(--color1);
     cursor: not-allowed;
 }
 
 .container .output:hover {
     border: 2px solid darkgoldenrod;
+}
+
+.left-output, .right-output {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.left-output {
+    overflow: hidden;
+    text-align: left;
+    font-size: .6em;
+}
+
+.right-output {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--background) var(--another-one);
+}
+
+.right.output-txt {
+    margin-bottom: -8px;
 }
 
 .container .input {
@@ -115,13 +156,13 @@ body {
     padding: 2px;
     flex-grow: 1;
 
-    border: 2px solid aliceblue;
+    border: 2px solid var(--background);
     border-radius: 5px;
-    color: var(--text);
-    background-color: var(--another-one);
+    color: var(--texture);
+    background-color: var(--background);
     text-align: center;
     font-family: inherit;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 1.3em;
 }
 
@@ -132,11 +173,11 @@ body {
     cursor: pointer;
 }
 
-.left-btn {
+.num-btn {
     width: 25%;
 }
 
-.right-btn {
+.operator-btn {
     width: 25%;
     height: 25%;
 }
@@ -147,6 +188,7 @@ body {
 
 #ac-btn {
     background-color: var(--ac1);
+    border: 2px solid var(--ac1);
 }
 
 #ac-btn:hover {
@@ -158,6 +200,7 @@ body {
     color: var(--color1);
     background-color: var(--idk-why);
     border: none;
+    border-radius: 20%;
 }
 
 #erase-btn:hover {
