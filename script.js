@@ -10,7 +10,6 @@ let currentOutput = document.querySelector(".right-output");
 
 let userInput = input.value;
 let decimalCount = 0;
-let operatorCount = 0;
 let displayResult = 0;
 
 let currentValue = "";
@@ -30,13 +29,14 @@ button.forEach(element => {
     } else if (buttonTxt === "AC") {
       allClear();
     } else if (buttonTxt === "=") {
-      display();
+      if (operator && currentValue) {
+        operate(operator, previousValue, currentValue);
+        display();
+      }
     } else if (buttonTxt === ".") {
-      if (decimalCount === 0) {
-        input.value += buttonTxt;
-        decimalCount++;
-      } else if (decimalCount > 0) {
-        return;
+      if (!currentValue.includes(".")) {
+        currentValue += ".";
+        input.value = currentValue;
       }
     } else if (
       buttonTxt === "+" ||
@@ -45,10 +45,11 @@ button.forEach(element => {
       buttonTxt === "/" ||
       buttonTxt === "%"
     ) {
+      input.value += buttonTxt;
       handleOperator(buttonTxt);
     } else {
+      currentValue += buttonTxt;
       input.value += buttonTxt;
-      currentValue += input.value;
     }
   });
 });
@@ -58,27 +59,34 @@ button.forEach(element => {
 function display() {
   let previousText = document.createElement("span");
   previousText.classList.add("previous-txt");
+  previousText.textContent = input.value;
+  previousOutput.appendChild(previousText);
 
   let currentText = document.createElement("span");
   currentText.classList.add("current-txt");
-
-  previousText.textContent = previousValue;
-  previousOutput.appendChild(previousText);
-
-  currentText.textContent = currentValue;
+  currentText.textContent = displayResult;
   currentOutput.appendChild(currentText);
+
+  previousValue = displayResult.toString();
+  currentValue = "";
+  operator = "";
+  input.value = displayResult;
 }
 
-// clear DOM
+// DOM clear functions
 
 function clear() {
   input.value = "";
+  currentValue = "";
+  decimalCount = 0;
 }
 
 function allClear() {
   input.value = "";
   previousValue = "";
   currentValue = "";
+  decimalCount = 0;
+  displayResult = 0;
   previousOutput.textContent = "";
   currentOutput.textContent = "";
 }
@@ -86,13 +94,17 @@ function allClear() {
 // operator function
 
 function handleOperator(op) {
-  if (previousValue && currentValue) {
-    operate(op, previousValue, currentValue);
-  }
+  if (currentValue) {
+    if (previousValue && operator) {
+      operate(operator, previousValue, currentValue);
+      display();
+    } else {
+      previousValue = currentValue;
+    }
 
+    currentValue = "";
+  } 
   operator = op;
-  previousValue = currentValue;
-  currentValue = "";
 }
 
 // basic math operations
@@ -110,6 +122,10 @@ function multi(a, b) {
 }
 
 function divide(a, b) {
+  if (b === 0) {
+    alert("Nuh-uh can't divide by zero boss!");
+    return 0;
+  }
   return a / b;
 }
 
@@ -120,8 +136,6 @@ function modulo(a, b) {
 // operation function
 
 function operate(op, operand1, operand2) {
-  if (!operand1 && !operand2) return;
-
   let num1 = parseFloat(operand1);
   let num2 = parseFloat(operand2);
   
@@ -135,8 +149,7 @@ function operate(op, operand1, operand2) {
     displayResult = divide(num1, num2);
   } else if (op === "%") {
     displayResult = modulo(num1, num2);
+  } else {
+    displayResult = num2;
   }
 }
-
-// test
-console.log(operate(op, num1, num2));

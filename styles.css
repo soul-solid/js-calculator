@@ -95,6 +95,7 @@ body {
 }
 
 .left-output, .right-output {
+    padding: 0 10px;
     width: 50%;
     height: 100%;
     display: flex;
@@ -109,9 +110,7 @@ body {
 }
 
 .right-output {
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: var(--background) var(--another-one);
+    overflow: hidden;
 }
 
 .right.output-txt {
@@ -119,6 +118,7 @@ body {
 }
 
 .container .input {
+    padding: 0 10px;
     height: 60px;
     background-color: var(--color1);
 }
@@ -180,6 +180,12 @@ body {
 .operator-btn {
     width: 25%;
     height: 25%;
+}
+
+.operator-btn:hover {
+    color: black;
+    background-color: var(--idk-why);
+    border: 2px solid var(--idk-why);
 }
 
 .zero-btn {
