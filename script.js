@@ -68,7 +68,7 @@ function display() {
   currentOutput.appendChild(currentText);
 
   previousValue = displayResult.toString();
-  currentValue = "";
+  currentValue = displayResult;
   operator = "";
   input.value = displayResult;
 }
